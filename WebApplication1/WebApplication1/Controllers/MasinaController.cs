@@ -56,7 +56,7 @@ namespace WebApplication1.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != masinaModel.idMasina)
+            if (id != masinaModel.IdMasina)
             {
                 return BadRequest();
             }
@@ -94,7 +94,7 @@ namespace WebApplication1.Controllers
             _context.Masini.Add(masinaModel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMasinaModel", new { id = masinaModel.idMasina }, masinaModel);
+            return CreatedAtAction("GetMasinaModel", new { id = masinaModel.IdMasina }, masinaModel);
         }
 
         // DELETE: api/Masina/5
@@ -120,7 +120,7 @@ namespace WebApplication1.Controllers
 
         private bool MasinaModelExists(Guid id)
         {
-            return _context.Masini.Any(e => e.idMasina == id);
+            return _context.Masini.Any(e => e.IdMasina == id);
         }
     }
 }

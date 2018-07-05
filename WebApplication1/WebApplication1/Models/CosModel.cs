@@ -11,8 +11,8 @@ namespace WebApplication1.Models
         [Key]
         public Guid IdCos { get; set; }
 
-        public MasinaModel masina { get; set; }
-        public int cantitate { get; set; }
+        public MasinaModel Masina { get; set; }
+        public int Cantitate { get; set; }
 
     }
 }

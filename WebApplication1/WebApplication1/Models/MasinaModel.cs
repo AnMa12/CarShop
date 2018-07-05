@@ -9,32 +9,12 @@ namespace WebApplication1.Models
     public class MasinaModel
     {
         [Key]
-        public Guid idMasina { get; set; }
+        public Guid IdMasina { get; set; }
 
-        private string Model;
-        private string Marca;
+        public string Model { get; set; }
+        public string Marca { get; set; }
         public int Pret { get; set; }
         public int Stoc { get; set; }
-
-        public string GetMarca()
-        {
-            return Marca;
-        }
-
-        public void SetMarca(string value)
-        {
-            Marca = value;
-        }
-
-        public string GetNume()
-        {
-            return Model;
-        }
-
-        public void SetNume(string value)
-        {
-            Model = value;
-        }
 
     }
 }

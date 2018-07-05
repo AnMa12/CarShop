@@ -12,16 +12,6 @@ namespace WebApplication1.Models
         public Guid IdComanda { get; set; }
 
         public PlataModel Plata { get; set; }
-        private string adresaLivrare;
-
-        public string GetAdresaLivrare()
-        {
-            return adresaLivrare;
-        }
-
-        public void SetAdresaLivrare(string value)
-        {
-            adresaLivrare = value;
-        }
+        public string AdresaLivrare { get; set; }
     }
 }

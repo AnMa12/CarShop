@@ -44,12 +44,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AppRoutingModule
   ],
   providers: [
-    AppComponent,
-    DashboardComponent,
-    HeroesComponent,
-    HeroDetailComponent,
-    MessagesComponent
+    HeroService,
+    MessageService,
+    PlatiService
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

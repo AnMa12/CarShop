@@ -12,6 +12,10 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { PlatiService } from './services/plati.service';
 import { HttpModule } from '@angular/http';
 import { HeroesComponent } from './heroes/heroes.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { MessagesComponent } from './messages/messages.component';
+import { HeroService } from './hero.service';
+import { MessageService } from './message.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,9 @@ import { HeroesComponent } from './heroes/heroes.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    HeroesComponent
+    HeroesComponent,
+    HeroDetailComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -34,7 +40,7 @@ import { HeroesComponent } from './heroes/heroes.component';
     ])
   ],
   providers: [
-    PlatiService
+    PlatiService, HeroService, MessageService
   ],
   bootstrap: [AppComponent]
 })

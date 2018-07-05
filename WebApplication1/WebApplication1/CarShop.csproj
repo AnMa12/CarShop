@@ -10,6 +10,8 @@
 
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
+    <AssemblyName>CarShop</AssemblyName>
+    <RootNamespace>CarShop</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

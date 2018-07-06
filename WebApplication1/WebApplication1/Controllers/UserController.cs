@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication1;
 using WebApplication1.Models;
 
-namespace WebApplication1.Controllers
+namespace CarShop.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -23,9 +23,9 @@ namespace WebApplication1.Controllers
 
         // GET: api/User
         [HttpGet]
-        public IEnumerable<UserModel> GetUserModel()
+        public IEnumerable<UserModel> GetUsers()
         {
-            return _context.Useri;
+            return _context.Users;
         }
 
         // GET: api/User/5
@@ -37,7 +37,7 @@ namespace WebApplication1.Controllers
                 return BadRequest(ModelState);
             }
 
-            var userModel = await _context.Useri.FindAsync(id);
+            var userModel = await _context.Users.FindAsync(id);
 
             if (userModel == null)
             {
@@ -91,7 +91,7 @@ namespace WebApplication1.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Useri.Add(userModel);
+            _context.Users.Add(userModel);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetUserModel", new { id = userModel.IdUser }, userModel);
@@ -106,13 +106,13 @@ namespace WebApplication1.Controllers
                 return BadRequest(ModelState);
             }
 
-            var userModel = await _context.Useri.FindAsync(id);
+            var userModel = await _context.Users.FindAsync(id);
             if (userModel == null)
             {
                 return NotFound();
             }
 
-            _context.Useri.Remove(userModel);
+            _context.Users.Remove(userModel);
             await _context.SaveChangesAsync();
 
             return Ok(userModel);
@@ -120,7 +120,7 @@ namespace WebApplication1.Controllers
 
         private bool UserModelExists(Guid id)
         {
-            return _context.Useri.Any(e => e.IdUser == id);
+            return _context.Users.Any(e => e.IdUser == id);
         }
     }
 }

@@ -8,60 +8,60 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication1;
 using WebApplication1.Models;
 
-namespace WebApplication1.Controllers
+namespace CarShop.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CosController : ControllerBase
+    public class PaymentController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public CosController(ApplicationDbContext context)
+        public PaymentController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Cos
+        // GET: api/Payment
         [HttpGet]
-        public IEnumerable<CosModel> GetCosModel()
+        public IEnumerable<PaymentModel> GetPayments()
         {
-            return _context.Cosuri;
+            return _context.Payments;
         }
 
-        // GET: api/Cos/5
+        // GET: api/Payment/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetCosModel([FromRoute] Guid id)
+        public async Task<IActionResult> GetPaymentModel([FromRoute] Guid id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var cosModel = await _context.Cosuri.FindAsync(id);
+            var paymentModel = await _context.Payments.FindAsync(id);
 
-            if (cosModel == null)
+            if (paymentModel == null)
             {
                 return NotFound();
             }
 
-            return Ok(cosModel);
+            return Ok(paymentModel);
         }
 
-        // PUT: api/Cos/5
+        // PUT: api/Payment/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCosModel([FromRoute] Guid id, [FromBody] CosModel cosModel)
+        public async Task<IActionResult> PutPaymentModel([FromRoute] Guid id, [FromBody] PaymentModel paymentModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != cosModel.IdCos)
+            if (id != paymentModel.IdPayment)
             {
                 return BadRequest();
             }
 
-            _context.Entry(cosModel).State = EntityState.Modified;
+            _context.Entry(paymentModel).State = EntityState.Modified;
 
             try
             {
@@ -69,7 +69,7 @@ namespace WebApplication1.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CosModelExists(id))
+                if (!PaymentModelExists(id))
                 {
                     return NotFound();
                 }
@@ -82,45 +82,45 @@ namespace WebApplication1.Controllers
             return NoContent();
         }
 
-        // POST: api/Cos
+        // POST: api/Payment
         [HttpPost]
-        public async Task<IActionResult> PostCosModel([FromBody] CosModel cosModel)
+        public async Task<IActionResult> PostPaymentModel([FromBody] PaymentModel paymentModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Cosuri.Add(cosModel);
+            _context.Payments.Add(paymentModel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCosModel", new { id = cosModel.IdCos }, cosModel);
+            return CreatedAtAction("GetPaymentModel", new { id = paymentModel.IdPayment }, paymentModel);
         }
 
-        // DELETE: api/Cos/5
+        // DELETE: api/Payment/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCosModel([FromRoute] Guid id)
+        public async Task<IActionResult> DeletePaymentModel([FromRoute] Guid id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var cosModel = await _context.Cosuri.FindAsync(id);
-            if (cosModel == null)
+            var paymentModel = await _context.Payments.FindAsync(id);
+            if (paymentModel == null)
             {
                 return NotFound();
             }
 
-            _context.Cosuri.Remove(cosModel);
+            _context.Payments.Remove(paymentModel);
             await _context.SaveChangesAsync();
 
-            return Ok(cosModel);
+            return Ok(paymentModel);
         }
 
-        private bool CosModelExists(Guid id)
+        private bool PaymentModelExists(Guid id)
         {
-            return _context.Cosuri.Any(e => e.IdCos == id);
+            return _context.Payments.Any(e => e.IdPayment == id);
         }
     }
 }

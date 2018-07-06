@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace WebApplication1.Models
 {
-    public class ComandaModel
+    public class OrderModel
     {
         [Key]
-        public Guid IdComanda { get; set; }
+        public Guid IdOrder { get; set; }
 
-        public PlataModel Plata { get; set; }
-        public string AdresaLivrare { get; set; }
+        public int PaymentModel { get; set; }
+        public string DeliveryAddress { get; set; }
     }
 }

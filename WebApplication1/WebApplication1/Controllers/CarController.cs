@@ -8,60 +8,60 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication1;
 using WebApplication1.Models;
 
-namespace WebApplication1.Controllers
+namespace CarShop.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ComandaController : ControllerBase
+    public class CarController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public ComandaController(ApplicationDbContext context)
+        public CarController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Comanda
+        // GET: api/Car
         [HttpGet]
-        public IEnumerable<ComandaModel> GetComandaModel()
+        public IEnumerable<CarModel> GetCars()
         {
-            return _context.Comenzi;
+            return _context.Cars;
         }
 
-        // GET: api/Comanda/5
+        // GET: api/Car/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetComandaModel([FromRoute] Guid id)
+        public async Task<IActionResult> GetCarModel([FromRoute] Guid id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var comandaModel = await _context.Comenzi.FindAsync(id);
+            var carModel = await _context.Cars.FindAsync(id);
 
-            if (comandaModel == null)
+            if (carModel == null)
             {
                 return NotFound();
             }
 
-            return Ok(comandaModel);
+            return Ok(carModel);
         }
 
-        // PUT: api/Comanda/5
+        // PUT: api/Car/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutComandaModel([FromRoute] Guid id, [FromBody] ComandaModel comandaModel)
+        public async Task<IActionResult> PutCarModel([FromRoute] Guid id, [FromBody] CarModel carModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != comandaModel.IdComanda)
+            if (id != carModel.IdCar)
             {
                 return BadRequest();
             }
 
-            _context.Entry(comandaModel).State = EntityState.Modified;
+            _context.Entry(carModel).State = EntityState.Modified;
 
             try
             {
@@ -69,7 +69,7 @@ namespace WebApplication1.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ComandaModelExists(id))
+                if (!CarModelExists(id))
                 {
                     return NotFound();
                 }
@@ -82,45 +82,45 @@ namespace WebApplication1.Controllers
             return NoContent();
         }
 
-        // POST: api/Comanda
+        // POST: api/Car
         [HttpPost]
-        public async Task<IActionResult> PostComandaModel([FromBody] ComandaModel comandaModel)
+        public async Task<IActionResult> PostCarModel([FromBody] CarModel carModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Comenzi.Add(comandaModel);
+            _context.Cars.Add(carModel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetComandaModel", new { id = comandaModel.IdComanda }, comandaModel);
+            return CreatedAtAction("GetCarModel", new { id = carModel.IdCar }, carModel);
         }
 
-        // DELETE: api/Comanda/5
+        // DELETE: api/Car/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteComandaModel([FromRoute] Guid id)
+        public async Task<IActionResult> DeleteCarModel([FromRoute] Guid id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var comandaModel = await _context.Comenzi.FindAsync(id);
-            if (comandaModel == null)
+            var carModel = await _context.Cars.FindAsync(id);
+            if (carModel == null)
             {
                 return NotFound();
             }
 
-            _context.Comenzi.Remove(comandaModel);
+            _context.Cars.Remove(carModel);
             await _context.SaveChangesAsync();
 
-            return Ok(comandaModel);
+            return Ok(carModel);
         }
 
-        private bool ComandaModelExists(Guid id)
+        private bool CarModelExists(Guid id)
         {
-            return _context.Comenzi.Any(e => e.IdComanda == id);
+            return _context.Cars.Any(e => e.IdCar == id);
         }
     }
 }

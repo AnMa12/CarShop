@@ -8,60 +8,60 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication1;
 using WebApplication1.Models;
 
-namespace WebApplication1.Controllers
+namespace CarShop.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MasinaController : ControllerBase
+    public class CartController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public MasinaController(ApplicationDbContext context)
+        public CartController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Masina
+        // GET: api/Cart
         [HttpGet]
-        public IEnumerable<MasinaModel> GetMasinaModel()
+        public IEnumerable<CartModel> GetCarts()
         {
-            return _context.Masini;
+            return _context.Carts;
         }
 
-        // GET: api/Masina/5
+        // GET: api/Cart/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetMasinaModel([FromRoute] Guid id)
+        public async Task<IActionResult> GetCartModel([FromRoute] Guid id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var masinaModel = await _context.Masini.FindAsync(id);
+            var cartModel = await _context.Carts.FindAsync(id);
 
-            if (masinaModel == null)
+            if (cartModel == null)
             {
                 return NotFound();
             }
 
-            return Ok(masinaModel);
+            return Ok(cartModel);
         }
 
-        // PUT: api/Masina/5
+        // PUT: api/Cart/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMasinaModel([FromRoute] Guid id, [FromBody] MasinaModel masinaModel)
+        public async Task<IActionResult> PutCartModel([FromRoute] Guid id, [FromBody] CartModel cartModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != masinaModel.IdMasina)
+            if (id != cartModel.IdCart)
             {
                 return BadRequest();
             }
 
-            _context.Entry(masinaModel).State = EntityState.Modified;
+            _context.Entry(cartModel).State = EntityState.Modified;
 
             try
             {
@@ -69,7 +69,7 @@ namespace WebApplication1.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MasinaModelExists(id))
+                if (!CartModelExists(id))
                 {
                     return NotFound();
                 }
@@ -82,45 +82,45 @@ namespace WebApplication1.Controllers
             return NoContent();
         }
 
-        // POST: api/Masina
+        // POST: api/Cart
         [HttpPost]
-        public async Task<IActionResult> PostMasinaModel([FromBody] MasinaModel masinaModel)
+        public async Task<IActionResult> PostCartModel([FromBody] CartModel cartModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Masini.Add(masinaModel);
+            _context.Carts.Add(cartModel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMasinaModel", new { id = masinaModel.IdMasina }, masinaModel);
+            return CreatedAtAction("GetCartModel", new { id = cartModel.IdCart }, cartModel);
         }
 
-        // DELETE: api/Masina/5
+        // DELETE: api/Cart/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMasinaModel([FromRoute] Guid id)
+        public async Task<IActionResult> DeleteCartModel([FromRoute] Guid id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var masinaModel = await _context.Masini.FindAsync(id);
-            if (masinaModel == null)
+            var cartModel = await _context.Carts.FindAsync(id);
+            if (cartModel == null)
             {
                 return NotFound();
             }
 
-            _context.Masini.Remove(masinaModel);
+            _context.Carts.Remove(cartModel);
             await _context.SaveChangesAsync();
 
-            return Ok(masinaModel);
+            return Ok(cartModel);
         }
 
-        private bool MasinaModelExists(Guid id)
+        private bool CartModelExists(Guid id)
         {
-            return _context.Masini.Any(e => e.IdMasina == id);
+            return _context.Carts.Any(e => e.IdCart == id);
         }
     }
 }

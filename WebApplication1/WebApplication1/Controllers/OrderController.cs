@@ -8,60 +8,60 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication1;
 using WebApplication1.Models;
 
-namespace WebApplication1.Controllers
+namespace CarShop.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PlataController : ControllerBase
+    public class OrderController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public PlataController(ApplicationDbContext context)
+        public OrderController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Plata
+        // GET: api/Order
         [HttpGet]
-        public IEnumerable<PlataModel> GetPlati()
+        public IEnumerable<OrderModel> GetOrders()
         {
-            return _context.Plati;
+            return _context.Orders;
         }
 
-        // GET: api/Plata/5
+        // GET: api/Order/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetPlataModel([FromRoute] Guid id)
+        public async Task<IActionResult> GetOrderModel([FromRoute] Guid id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var plataModel = await _context.Plati.FindAsync(id);
+            var orderModel = await _context.Orders.FindAsync(id);
 
-            if (plataModel == null)
+            if (orderModel == null)
             {
                 return NotFound();
             }
 
-            return Ok(plataModel);
+            return Ok(orderModel);
         }
 
-        // PUT: api/Plata/5
+        // PUT: api/Order/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPlataModel([FromRoute] Guid id, [FromBody] PlataModel plataModel)
+        public async Task<IActionResult> PutOrderModel([FromRoute] Guid id, [FromBody] OrderModel orderModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != plataModel.IdPlata)
+            if (id != orderModel.IdOrder)
             {
                 return BadRequest();
             }
 
-            _context.Entry(plataModel).State = EntityState.Modified;
+            _context.Entry(orderModel).State = EntityState.Modified;
 
             try
             {
@@ -69,7 +69,7 @@ namespace WebApplication1.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PlataModelExists(id))
+                if (!OrderModelExists(id))
                 {
                     return NotFound();
                 }
@@ -82,45 +82,45 @@ namespace WebApplication1.Controllers
             return NoContent();
         }
 
-        // POST: api/Plata
+        // POST: api/Order
         [HttpPost]
-        public async Task<IActionResult> PostPlataModel([FromBody] PlataModel plataModel)
+        public async Task<IActionResult> PostOrderModel([FromBody] OrderModel orderModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Plati.Add(plataModel);
+            _context.Orders.Add(orderModel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPlataModel", new { id = plataModel.IdPlata }, plataModel);
+            return CreatedAtAction("GetOrderModel", new { id = orderModel.IdOrder }, orderModel);
         }
 
-        // DELETE: api/Plata/5
+        // DELETE: api/Order/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePlataModel([FromRoute] Guid id)
+        public async Task<IActionResult> DeleteOrderModel([FromRoute] Guid id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var plataModel = await _context.Plati.FindAsync(id);
-            if (plataModel == null)
+            var orderModel = await _context.Orders.FindAsync(id);
+            if (orderModel == null)
             {
                 return NotFound();
             }
 
-            _context.Plati.Remove(plataModel);
+            _context.Orders.Remove(orderModel);
             await _context.SaveChangesAsync();
 
-            return Ok(plataModel);
+            return Ok(orderModel);
         }
 
-        private bool PlataModelExists(Guid id)
+        private bool OrderModelExists(Guid id)
         {
-            return _context.Plati.Any(e => e.IdPlata == id);
+            return _context.Orders.Any(e => e.IdOrder == id);
         }
     }
 }

@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace WebApplication1.Models
 {
-    public class MasinaModel
+    public class CarModel
     {
         [Key]
-        public Guid IdMasina { get; set; }
+        public Guid IdCar { get; set; }
 
+        public string Make { get; set; }
         public string Model { get; set; }
-        public string Marca { get; set; }
-        public int Pret { get; set; }
-        public int Stoc { get; set; }
+        public float Price { get; set; }
+        public int Stock { get; set; }
 
     }
 }

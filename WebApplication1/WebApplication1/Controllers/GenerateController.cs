@@ -26,50 +26,127 @@ namespace WebApplication1.Controllers
         {
             _context.Database.EnsureDeleted();
             _context.Database.EnsureCreated();
-            _context.Plati.AddRange(new PlataModel[] {
-                new PlataModel()
+
+            _context.Payments.AddRange(new PaymentModel[] {
+                new PaymentModel()
                 {
-                    MetodaDePlata = PlataModel.MetodaDePlataType.Cash
+                    PaymentMethod = PaymentModel.PaymentMethodType.Cash
                 }
             });
+
             _context.SaveChanges();
         }
 
-        [HttpPost("Scenario2")]
-        public void Scenario2()
+        [HttpPost("PopulatePlati")]
+        public void PopulatePlati()
         {
-            _context.Database.EnsureDeleted();
             _context.Database.EnsureCreated();
-            _context.Plati.AddRange(new PlataModel[] {
-                new PlataModel()
+
+            _context.Payments.AddRange(new PaymentModel[] {
+                new PaymentModel()
                 {
-                    MetodaDePlata = PlataModel.MetodaDePlataType.Cash
+                    PaymentMethod = PaymentModel.PaymentMethodType.Cash
                 }
             });
 
+            _context.SaveChanges();
+        }
 
+        [HttpPost("PopulateUsers")]
+        public void PopulateUsers()
+        {
+            _context.Database.EnsureCreated();
 
-            _context.Masini.AddRange(new MasinaModel[] {
-                new MasinaModel() {
-                    Pret = 7800,
-                    Stoc = 3
+            _context.Users.AddRange(new UserModel[]
+            {
+                new UserModel()
+                {
+                    FirstName = "Paulina",
+                    LastName = "Kunibert",
+                    Login = "user",
+                    Password = "user",
+                    Email = "user@mail.com",
+                    Phone = "01234567890"
                 },
-                new MasinaModel() {
-                    Pret = 9200,
-                    Stoc = 1
+                new UserModel()
+                {
+                    FirstName = "Mihael",
+                    LastName = "Niraj",
+                    Login = "user",
+                    Password = "user",
+                    Email = "user@mail.com",
+                    Phone = "01234567890"
                 },
-                new MasinaModel() {
-                    Pret = 400,
-                    Stoc = 2
-                },
-                new MasinaModel() {
-                    Pret = 8900,
-                    Stoc = 7
-                },
+                new UserModel()
+                {
+                    FirstName = "Karl",
+                    LastName = "Melia",
+                    Login = "user",
+                    Password = "user",
+                    Email = "user@mail.com",
+                    Phone = "01234567890"
+                }
             });
 
+            _context.SaveChanges();
+        }
 
-            ;
+
+        [HttpPost("PopulateComenzi")]
+        public void PopulateComenzi()
+        {
+            _context.Database.EnsureCreated();
+           
+            //exista cumva metoda sa faci get pe idu unei masini???
+
+            _context.SaveChanges();
+        }
+
+
+        [HttpPost("PopulateMasini")]
+        public void PopulateMasini()
+        {
+            _context.Database.EnsureCreated();
+
+            _context.Cars.AddRange(new CarModel[] {
+                new CarModel() {
+                    Make = "Chevrolet",
+                    Model = "Silverado",
+                    Price = 40500,
+                    Stock = 3
+                },
+                new CarModel() {
+                    Make = "Dodge",
+                    Model = "Ram",
+                    Price = 19900,
+                    Stock = 2
+                },
+                new CarModel() {
+                    Make = "Ford",
+                    Model = "Explorer",
+                    Price = 29500,
+                    Stock = 1
+                },
+                new CarModel() {
+                    Make = "Ford",
+                    Model = "Explorer",
+                    Price = 29500,
+                    Stock = 1
+                },
+                new CarModel() {
+                    Make = "Hyunday",
+                    Model = "Santa",
+                    Price = 19500,
+                    Stock = 10
+                },
+                new CarModel() {
+                    Make = "Toyota",
+                    Model = "Tacoma",
+                    Price = 19500,
+                    Stock = 5
+                }
+            });
+
             _context.SaveChanges();
         }
     }

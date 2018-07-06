@@ -14,14 +14,10 @@ namespace WebApplication1
 
         }
 
-        public DbSet<PlataModel> Plati { get; set; }
-
-        public DbSet<ComandaModel> Comenzi { get; set; }
-
-        public DbSet<UserModel> Useri { get; set; }
-  
-        public DbSet<MasinaModel> Masini { get; set; }
-
-        public DbSet<CosModel> Cosuri { get; set; }
+        public DbSet<PaymentModel> Payments { get; set; }
+        public DbSet<OrderModel> Orders { get; set; }
+        public DbSet<UserModel> Users { get; set; }
+        public DbSet<CarModel> Cars { get; set; }
+        public DbSet<CartModel> Carts { get; set; }
     }
 }

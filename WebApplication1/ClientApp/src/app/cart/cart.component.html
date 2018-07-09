@@ -1,3 +1,11 @@
-<p>
-  cart works!
-</p>
+<div *ngFor="let product of cartArray">
+  <mat-card>
+    <p>{{product.quantity}}</p>
+    <div *ngFor="let car of product.Car">
+      <p>{{car.make}}</p>
+      <p>{{car.model}}</p>
+      <p>{{car.price}}</p>
+      <p>{{car.stock}}</p>
+    </div>
+  </mat-card>
+</div>

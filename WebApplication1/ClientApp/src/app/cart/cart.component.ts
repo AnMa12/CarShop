@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartsService } from '../services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -7,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  //list with user products in data base
+  cartArray: any = [];
 
-
-
-  constructor() { }
+  constructor(private cartsService: CartsService) {
+    cartsService.query().subscribe(res => this.cartArray = res.json());
+  }
 
   ngOnInit() {
   }

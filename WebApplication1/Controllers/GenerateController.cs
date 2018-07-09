@@ -91,17 +91,50 @@ namespace WebApplication1.Controllers
             _context.SaveChanges();
         }
 
-
-        [HttpPost("PopulateOrders")]
-        public void PopulateOrders()
+        [HttpPost("PopulateCarts")]
+        public void PopulateCarts()
         {
             _context.Database.EnsureCreated();
-           
-            //exista cumva metoda sa faci get pe idu unei masini???
+
+            _context.Cart.AddRange(new CartModel[]
+            {
+                new CartModel()
+                {
+                    Quantity = 2,
+                    Car = new List<CarModel> {
+                        new CarModel() {
+                            Photo = "https://www.fridayimages.com/1180801932007150112/3GCUKSEC5FG171597.jpg",
+                            Make = "Chevrolet",
+                            Model = "Silverado",
+                            Price = 40500,
+                            Stock = 3
+                        },
+                        new CarModel() {
+                            Photo = "https://www.fridayimages.com/1180801932007150112/3D7KS28C17G762066.jpg",
+                            Make = "Dodge",
+                            Model = "Ram",
+                            Price = 19900,
+                            Stock = 2
+                        },
+                    },
+                },
+                new CartModel()
+                {
+                    Quantity = 4,
+                    Car = new List<CarModel> {
+                        new CarModel() {
+                            Photo = "https://www.fridayimages.com/1180801932007150112/3GCUKSEC5FG171597.jpg",
+                            Make = "Chevrolet",
+                            Model = "Silverado",
+                            Price = 40500,
+                            Stock = 3
+                        },
+                    },
+                },
+            });
 
             _context.SaveChanges();
         }
-
 
         [HttpPost("PopulateCars")]
         public void PopulateCars()

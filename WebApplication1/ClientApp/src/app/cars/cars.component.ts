@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CarsService } from '../services/cars.service';
+import { CartsService } from '../services/cart.service';
 
 @Component({
   selector: 'app-cars',
@@ -9,14 +10,22 @@ import { CarsService } from '../services/cars.service';
 export class CarsComponent implements OnInit {
 
   carsArray: any = [];
+  cart: any = {};
 
-  addToCart(item): void {
-    alert(item);
-  }
-
-  constructor(private carsService: CarsService) {
+  constructor(private carsService: CarsService, private cartsService: CartsService) {
     carsService.query().subscribe(res => this.carsArray = res.json());
   }
+
+  addToCart(car): void {
+    
+
+
+
+    //add the car object into Carts TABLE
+    this.cartsService.create(this.cart).subscribe(req => alert("Added in cart!"));
+  }
+
+  
 
   ngOnInit() {
   }

@@ -18,6 +18,7 @@ import { MatMenuModule, MatButtonModule, MatIconModule, MatCardModule } from '@a
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRippleModule } from '@angular/material'
 import { CommonModule } from '@angular/common';
+import { CartsService } from './services/cart.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { CommonModule } from '@angular/common';
   ],
   providers: [
     PaymentsService,
-    CarsService
+    CarsService,
+    CartsService
   ],
   bootstrap: [AppComponent]
 })

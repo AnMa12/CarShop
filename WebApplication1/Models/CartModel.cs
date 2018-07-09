@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,8 +12,9 @@ namespace WebApplication1.Models
         [Key]
         public Guid IdCart { get; set; }
 
-        public CarModel Masina { get; set; }
-        public int Cantitate { get; set; }
+        public List<CarModel> Car { get; set; }
+
+        public int Quantity { get; set; }
 
     }
 }

@@ -11,6 +11,7 @@ namespace WebApplication1.Models
         [Key]
         public Guid IdCar { get; set; }
 
+        public string Photo { get; set; }
         public string Make { get; set; }
         public string Model { get; set; }
         public float Price { get; set; }

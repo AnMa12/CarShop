@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PaymentsService } from '../services/payments.service';
+import { CarsService } from '../services/cars.service';
 
 @Component({
   selector: 'app-cars',
@@ -8,10 +8,14 @@ import { PaymentsService } from '../services/payments.service';
 })
 export class CarsComponent implements OnInit {
 
-  paymentsArray: any = [];
+  carsArray: any = [];
 
-  constructor(private paymentsService: PaymentsService) {
-    paymentsService.query().subscribe(res => this.paymentsArray = res.json());
+  addToCart(item): void {
+    alert(item);
+  }
+
+  constructor(private carsService: CarsService) {
+    carsService.query().subscribe(res => this.carsArray = res.json());
   }
 
   ngOnInit() {

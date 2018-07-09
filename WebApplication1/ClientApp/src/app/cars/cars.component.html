@@ -1,7 +1,17 @@
-<p>
-  cars works!
-</p>
 
-<div *ngFor="let payment of paymentsArray">
-  {{payment.idPayment}}
+<h1>Car Shop</h1>
+
+<div *ngFor="let car of carsArray">
+  <mat-card>
+    <mat-card-header>
+      <p>{{car.make}}</p>
+      <p>{{car.model}}</p>
+    </mat-card-header>
+    <img src={{car.photo}} height="70" width="100" />
+    <mat-card-content>
+      <p>{{car.price}}</p>
+      <p>{{car.stock}}</p>
+      <button (click)="addToCart({{car.idCar}})">Add To Cart</button>
+    </mat-card-content>
+</mat-card>
 </div>

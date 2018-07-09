@@ -19,13 +19,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRippleModule } from '@angular/material'
 import { CommonModule } from '@angular/common';
 import { CartsService } from './services/cart.service';
+import { LoginComponent } from './login/login.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarsComponent,
     UserComponent,
-    CartComponent
+    CartComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -38,14 +41,15 @@ import { CartsService } from './services/cart.service';
     MatIconModule,
     MatCardModule,
     BrowserAnimationsModule,
-    CommonModule
+    CommonModule,
+    MatFormFieldModule
   ],
   exports: [
     MatMenuModule,
     MatButtonModule,
     MatIconModule,
     MatCardModule,
-
+    MatFormFieldModule
   ],
   providers: [
     PaymentsService,

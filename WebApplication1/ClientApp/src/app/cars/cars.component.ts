@@ -12,14 +12,14 @@ export class CarsComponent implements OnInit {
   carsArray: any = [];
   cart: any = {};
 
+
   constructor(private carsService: CarsService, private cartsService: CartsService) {
     carsService.query().subscribe(res => this.carsArray = res.json());
   }
 
   addToCart(car): void {
-    
 
-
+    //we need to have one cart per customer 
 
     //add the car object into Carts TABLE
     this.cartsService.create(this.cart).subscribe(req => alert("Added in cart!"));

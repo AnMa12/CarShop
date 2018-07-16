@@ -26,8 +26,27 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\app\login\**" />
+    <Compile Remove="ClientApp\src\app\NewFolder\**" />
+    <Compile Remove="ClientApp\src\app\user\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\app\login\**" />
+    <Content Remove="ClientApp\src\app\NewFolder\**" />
+    <Content Remove="ClientApp\src\app\user\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="ClientApp\src\app\login\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\NewFolder\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\user\**" />
+    <None Remove="ClientApp\src\app\login\**" />
+    <None Remove="ClientApp\src\app\NewFolder\**" />
+    <None Remove="ClientApp\src\app\user\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\shared\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

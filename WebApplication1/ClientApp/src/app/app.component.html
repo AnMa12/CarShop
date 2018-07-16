@@ -1,25 +1,23 @@
-<button mat-icon-button [matMenuTriggerFor]="menu">
-  <mat-icon>more_vert</mat-icon>
-</button>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item>
-    <mat-icon>dialpad</mat-icon>
-    <span>Redial</span>
-  </button>
-  <button mat-menu-item disabled>
-    <mat-icon>voicemail</mat-icon>
-    <span>Check voicemail</span>
-  </button>
-  <button mat-menu-item>
-    <mat-icon>notifications_off</mat-icon>
-    <span>Disable alerts</span>
-  </button>
-</mat-menu>
-
 <nav>
-  <a routerLink="/cars">Cars</a>
-  <a routerLink="/cart">Cart</a>
-  <a routerLink="/user">Your Account</a>
+  <div class="nav-wrapper" style="background-color:#a6d8d4">
+    <a href="#" class="brand-logo">CarShop</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a routerLink="/cars">Cars</a></li>
+      <li><a routerLink="/cart">Cart</a></li>
+      <li><a routerLink="/sign-up">Sign Up</a></li>
+    </ul>
+  </div>
+</nav>
+<nav>
+  <div class="nav-wrapper">
+    <form>
+      <div class="input-field">
+        <input id="search" type="search" required>
+        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+        <i class="material-icons">close</i>
+      </div>
+    </form>
+  </div>
 </nav>
 <router-outlet></router-outlet>
 

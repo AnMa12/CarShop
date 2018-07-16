@@ -2,19 +2,20 @@
 
 <div class="container">
   <h1>Car Shop</h1>
-  <div *ngFor="let car of carsArray">
-    <mat-card>
-      <mat-card-header>
-        <p>{{car.make}}</p>
-        <p>{{car.model}}</p>
-      </mat-card-header>
-      <img src={{car.photo}} height="70" width="100" />
-      <mat-card-content>
-        <p>{{car.price}}</p>
-        <p>{{car.stock}}</p>
-        <button (click)="addToCart(car)">Add To Cart</button>
-      </mat-card-content>
-    </mat-card>
+  <div classs="row">
+    <div class="col s4" *ngFor="let car of carsArray">
+      <mat-card>
+        <mat-card-header>
+          <p>{{car.make}}</p>
+          <p>{{car.model}}</p>
+        </mat-card-header>
+        <img src={{car.photo}} height="70" width="100" />
+        <mat-card-content>
+          <p>{{car.price}}</p>
+          <p>{{car.stock}}</p>
+          <button (click)="addToCart(car)">Add To Cart</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
-
 </div>

@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 
@@ -19,14 +20,19 @@ import { MatRippleModule } from '@angular/material'
 import { CommonModule } from '@angular/common';
 import { CartsService } from './services/cart.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { SignUpComponent } from './sign-up/sign-up.component';
+import { UserService } from './shared/user.service';
+import { UserComponent } from './user/user.component';
+import { SignInComponent } from './user/sign-in/sign-in.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarsComponent,
     CartComponent,
-    SignUpComponent
+    SignUpComponent,
+    UserComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -40,7 +46,9 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     MatCardModule,
     BrowserAnimationsModule,
     CommonModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   exports: [
     MatMenuModule,
@@ -52,7 +60,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
   providers: [
     PaymentsService,
     CarsService,
-    CartsService
+    CartsService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

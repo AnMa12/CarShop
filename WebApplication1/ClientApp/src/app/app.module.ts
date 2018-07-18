@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 
 import { PaymentsService } from './services/payments.service';
 import { CarsComponent } from './cars/cars.component';
-import { CarsService } from './services/cars.service';
+import { CarService } from './services/car.service';
 import { CartComponent } from './cart/cart.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { MatMenuModule, MatButtonModule, MatIconModule, MatCardModule } from '@angular/material';
@@ -61,7 +61,7 @@ import { CarDetailComponent } from './car-detail/car-detail.component';
   ],
   providers: [
     PaymentsService,
-    CarsService,
+    CarService,
     CartsService,
     UserService
   ],

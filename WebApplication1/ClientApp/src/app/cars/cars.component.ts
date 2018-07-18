@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CarsService } from '../services/cars.service';
+import { CarService } from '../services/car.service';
 import { CartsService } from '../services/cart.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class CarsComponent implements OnInit {
   carsArray: any = [];
   cart: any = {};
 
-  constructor(private carsService: CarsService, private cartsService: CartsService) {
+  constructor(private carsService: CarService, private cartsService: CartsService) {
     carsService.query().subscribe(res => this.carsArray = res.json());
   }
 

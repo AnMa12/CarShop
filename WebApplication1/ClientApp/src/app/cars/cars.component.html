@@ -1,10 +1,11 @@
-
 <h1 style="border: dotted 1px black; width: 80%; margin-left: 230px">Car Shop</h1>
 <div class="row" style="border: dotted 1px black; width: 80%; margin-left: 230px">
   <div class="col s12 m4 l3" *ngFor="let car of carsArray" style="margin: auto">
     <div class="card" style="margin: 5px auto 5px auto">
-      <div class="card-image waves-effect waves-block waves-light" routerLink="/detail/{{car.id}}">
-        <img class="activator" src={{car.photo}} height="170" width="100">
+      <div class="card-image waves-effect waves-block waves-light">
+        <a routerLink="/detail/{{car.idCar}}">
+          <img class="activator" src={{car.photo}} height="170" width="100">
+        </a>
       </div>
       <div class="card-content">
         <span class="card-title activator grey-text text-darken-4 center">{{car.make}}</span>

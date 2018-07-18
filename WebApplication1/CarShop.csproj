@@ -41,6 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\src\app\classes\" />
     <Folder Include="ClientApp\src\app\shared\" />
   </ItemGroup>
 

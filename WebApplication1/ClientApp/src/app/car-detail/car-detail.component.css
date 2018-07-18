@@ -1,3 +1,3 @@
-img:hover {
-  transform: rotate(-3deg);
+.test-border {
+  border: solid 2px black;
 }

@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { CarService } from '../services/car.service';
+import { CartsService } from '../services/cart.service';
 
 @Component({
   selector: 'app-car-detail',
@@ -13,6 +14,7 @@ import { CarService } from '../services/car.service';
 export class CarDetailComponent implements OnInit {
 
   car: any;
+  cart: any = {};
 
   constructor(
     /*The ActivatedRoute holds information about the route to this instance of
@@ -24,7 +26,8 @@ export class CarDetailComponent implements OnInit {
     private carsService: CarService,
     /*The location is an Angular service for interacting with the browser.
      * You'll use it later to navigate back to the view that navigated here.*/
-    private location: Location
+    private location: Location,
+    private cartsService: CartsService
   ) { }
 
   ngOnInit() {
@@ -36,4 +39,8 @@ export class CarDetailComponent implements OnInit {
     this.carsService.find(id).subscribe(res => this.car = res.json());
   }
 
+  addToCart(car): void {
+    //we need to have one cart per customer add the car object into Carts TABLE
+    this.cartsService.create(this.cart).subscribe(req => alert("Added in cart!"));
+  }
 }

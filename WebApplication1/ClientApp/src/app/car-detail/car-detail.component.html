@@ -1,10 +1,8 @@
-<div *ngIf="car" class="container">
-  <img class="activator" src={{car.photo}} height="170" width="100">
-  <span class="card-title activator grey-text text-darken-4 center">{{car.make}}</span>
-  <span class="card-title activator grey-text text-darken-4 center">{{car.model}}</span>
-  <p class="center">Price: {{car.price}} $</p>
-  <p class="center">Stock: {{car.stock}}</p>
+<div *ngIf="car" class="center">
+  <img src={{car.photo}} height="180" width="240">
+  <p>{{car.make}}</p>
+  <p>{{car.model}}</p>
+  <p>Price: {{car.price}} $</p>
+  <p>Stock: {{car.stock}}</p>
   <a class="waves-effect waves-light btn center" (click)="addToCart(car)">Add To Cart</a>
 </div>
-  
-

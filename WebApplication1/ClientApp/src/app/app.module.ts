@@ -10,7 +10,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 
 import { PaymentsService } from './services/payments.service';
-import { CarsComponent } from './cars/cars.component';
+
 import { CarService } from './services/car.service';
 import { CartComponent } from './cart/cart.component';
 import { AppRoutingModule } from './/app-routing.module';
@@ -25,16 +25,17 @@ import { UserComponent } from './user/user.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { CarDetailComponent } from './car-detail/car-detail.component';
+import { CarsShowroomComponent } from './cars-showroom/cars-showroom.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarsComponent,
     CartComponent,
     SignUpComponent,
     UserComponent,
     SignInComponent,
-    CarDetailComponent
+    CarDetailComponent,
+    CarsShowroomComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

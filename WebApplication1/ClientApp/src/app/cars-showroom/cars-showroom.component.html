@@ -2,17 +2,17 @@
 <div class="row" style="border: dotted 1px black; width: 80%; margin-left: 230px">
   <div class="col s12 m4 l3" *ngFor="let car of carsArray" style="margin: auto">
     <div class="card" style="margin: 5px auto 5px auto">
-      <div class="card-image waves-effect waves-block waves-light">
-        <a routerLink="/detail/{{car.idCar}}">
-          <img class="activator" src={{car.photo}} height="170" width="100">
-        </a>
+      <div routerLink="/detail/{{car.idCar}}" class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src={{car.photo}} height="170" width="100">
       </div>
       <div class="card-content">
         <span class="card-title activator grey-text text-darken-4 center">{{car.make}}</span>
         <span class="card-title activator grey-text text-darken-4 center">{{car.model}}</span>
         <p class="center">Price: {{car.price}} $</p>
         <p class="center">Stock: {{car.stock}}</p>
-        <a class="waves-effect waves-light btn center" (click)="addToCart(car)">Add To Cart</a>
+        <span class="card-title activator grey-text text-darken-4 center">
+          <a class="waves-effect waves-light btn my-button" routerLink="/detail/{{car.idCar}}">Show details</a>
+        </span>
       </div>
     </div>
   </div>

@@ -1,7 +1,7 @@
-<div *ngFor="let product of cartArray">
+<div *ngFor="let product of cart">
   <mat-card>
-    <p>{{product.quantity}}</p>
-    <div *ngFor="let car of product.Car">
+    <p>{{product.idCart}}</p>
+    <div class="test-border" *ngFor="let car of product.car">
       <p>{{car.make}}</p>
       <p>{{car.model}}</p>
       <p>{{car.price}}</p>

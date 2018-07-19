@@ -11,10 +11,7 @@ namespace WebApplication1.Models
     {
         [Key]
         public Guid IdCart { get; set; }
-
         public List<CarModel> Car { get; set; }
-
-        public int Quantity { get; set; }
 
     }
 }

@@ -52,6 +52,7 @@ namespace WebApplication1.Controllers
             _context.SaveChanges();
         }
 
+
         [HttpPost("PopulateUsers")]
         public void PopulateUsers()
         {
@@ -100,7 +101,6 @@ namespace WebApplication1.Controllers
             {
                 new CartModel()
                 {
-                    Quantity = 2,
                     Car = new List<CarModel> {
                         new CarModel() {
                             Photo = "https://www.fridayimages.com/1180801932007150112/3GCUKSEC5FG171597.jpg",
@@ -118,23 +118,11 @@ namespace WebApplication1.Controllers
                         },
                     },
                 },
-                new CartModel()
-                {
-                    Quantity = 4,
-                    Car = new List<CarModel> {
-                        new CarModel() {
-                            Photo = "https://www.fridayimages.com/1180801932007150112/3GCUKSEC5FG171597.jpg",
-                            Make = "Chevrolet",
-                            Model = "Silverado",
-                            Price = 40500,
-                            Stock = 3
-                        },
-                    },
-                },
             });
 
             _context.SaveChanges();
         }
+
 
         [HttpPost("PopulateCars")]
         public void PopulateCars()

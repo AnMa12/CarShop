@@ -17,15 +17,11 @@ export class CartsService {
 
   update(template: any): Observable<any> {
     const copy = this.convert(template);
-    return this.http.put(`${this.resourceUrl}/${template.answerId}`, copy).map((res: Response) => {
-      return res.json();
-    });
+    return this.http.put(`${this.resourceUrl}/${template.answerId}`, copy);
   }
 
-  find(id: number): Observable<any> {
-    return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
-      return res.json();
-    });
+  find(id: string): Observable<any> {
+    return this.http.get(`${this.resourceUrl}/${id}`);
   }
 
   query(req?: any): Observable<any> {

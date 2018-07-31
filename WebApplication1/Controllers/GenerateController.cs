@@ -96,34 +96,14 @@ namespace WebApplication1.Controllers
         public void PopulateCarts()
         {
             _context.Database.EnsureCreated();
-
-            _context.Cart.AddRange(new CartModel[]
+            _context.Carts.Add(new CartModel()
             {
-                new CartModel()
-                {
-                    Car = new List<CarModel> {
-                        new CarModel() {
-                            Photo = "https://www.fridayimages.com/1180801932007150112/3GCUKSEC5FG171597.jpg",
-                            Make = "Chevrolet",
-                            Model = "Silverado",
-                            Price = 40500,
-                            Stock = 3
-                        },
-                        new CarModel() {
-                            Photo = "https://www.fridayimages.com/1180801932007150112/3D7KS28C17G762066.jpg",
-                            Make = "Dodge",
-                            Model = "Ram",
-                            Price = 19900,
-                            Stock = 2
-                        },
-                    },
-                },
+                CarIds = _context.Cars.Select(m => m.IdCar).ToList()
             });
-
             _context.SaveChanges();
         }
 
-
+  
         [HttpPost("PopulateCars")]
         public void PopulateCars()
         {

@@ -15,8 +15,8 @@ import { Car } from '../models/car.model';
 })
 export class CarDetailComponent implements OnInit {
 
-  car: Car;
-  cart: Cart;
+  car: any;
+  cart: any;
 
   constructor(
     /*The ActivatedRoute holds information about the route to this instance of
@@ -32,6 +32,7 @@ export class CarDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getCar();
+    this.getCart('08d5ed6f-c488-48e0-5261-92a16ed4c53f');
   }
 
   getCar(): void {
@@ -43,20 +44,19 @@ export class CarDetailComponent implements OnInit {
     this.cartsService.find(id).subscribe(res => this.cart = res.json());
   }
 
-  addToCart(carAdded): void {
-    //get the cart in cart object
-    this.getCart('08d5ed4c-1a62-f1aa-8683-5c7918d4b615');
+  addToCart(): void {
+      var carJSON = JSON.stringify(this.car);
+      var carObj = JSON.parse(carJSON);
+      
+      var cartJSON = JSON.stringify(this.cart);
+      var cartObj = JSON.parse(cartJSON);
 
-    //alert test 1
-    alert(JSON.stringify(this.car));
-    //alert test 2
-    alert(this.cart.IdCart);
+      //append the new car
+      cartObj.carIds.push(carObj.idCar);
+      console.log(cartObj);
+      cartObj.cars = JSON.stringify(cartObj.carIds);
 
-    //append the new car
-    this.cart.Car.push(carAdded);
-    debugger;
-
-    //update the cart
-    this.cartsService.update(this.cart).subscribe(req => alert("Added in cart!"));
+      //update cart
+      this.cartsService.update(cartObj, cartObj.idCart).subscribe(req => alert("Added in cart!"));
   }
 }

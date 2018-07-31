@@ -15,9 +15,9 @@ export class CartsService {
     return this.http.post(this.resourceUrl, copy);
   }
 
-  update(template: any): Observable<any> {
+  update(template: any, id): Observable<any> {
     const copy = this.convert(template);
-    return this.http.put(`${this.resourceUrl}/${template.answerId}`, copy);
+    return this.http.put(`${this.resourceUrl}/${id}`, copy);
   }
 
   find(id: string): Observable<any> {

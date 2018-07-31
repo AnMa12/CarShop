@@ -24,8 +24,8 @@ namespace WebApplication1
         public DbSet<OrderModel> Orders { get; set; }
         public DbSet<UserModel> Users { get; set; }
         public DbSet<CarModel> Cars { get; set; }
-        public DbSet<CartModel> Cart { get; set; }
-        public DbSet<AccountModel> Account { get; set; }
+        public DbSet<CartModel> Carts { get; set; }
+        public DbSet<AccountModel> Accounts { get; set; }
 
     }
 }

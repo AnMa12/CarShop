@@ -25,7 +25,7 @@ namespace CarShop.Controllers
         [HttpGet]
         public IEnumerable<AccountModel> GetAccountModel()
         {
-            return _context.Account;
+            return _context.Accounts;
         }
 
         // GET: api/Account/5
@@ -37,7 +37,7 @@ namespace CarShop.Controllers
                 return BadRequest(ModelState);
             }
 
-            var accountModel = await _context.Account.FindAsync(id);
+            var accountModel = await _context.Accounts.FindAsync(id);
 
             if (accountModel == null)
             {
@@ -91,7 +91,7 @@ namespace CarShop.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Account.Add(accountModel);
+            _context.Accounts.Add(accountModel);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetAccountModel", new { id = accountModel.IdAccount }, accountModel);
@@ -106,13 +106,13 @@ namespace CarShop.Controllers
                 return BadRequest(ModelState);
             }
 
-            var accountModel = await _context.Account.FindAsync(id);
+            var accountModel = await _context.Accounts.FindAsync(id);
             if (accountModel == null)
             {
                 return NotFound();
             }
 
-            _context.Account.Remove(accountModel);
+            _context.Accounts.Remove(accountModel);
             await _context.SaveChangesAsync();
 
             return Ok(accountModel);
@@ -120,7 +120,7 @@ namespace CarShop.Controllers
 
         private bool AccountModelExists(Guid id)
         {
-            return _context.Account.Any(e => e.IdAccount == id);
+            return _context.Accounts.Any(e => e.IdAccount == id);
         }
     }
 }

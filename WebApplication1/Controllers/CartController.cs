@@ -25,7 +25,7 @@ namespace CarShop.Controllers
         [HttpGet]
         public IEnumerable<CartModel> GetCart()
         {
-            return _context.Cart.Include(c => c.Car);
+            return _context.Carts;
         }
 
         // GET: api/Cart/5
@@ -37,7 +37,7 @@ namespace CarShop.Controllers
                 return BadRequest(ModelState);
             }
 
-            var cartModel = await _context.Cart.FindAsync(id);
+            var cartModel = await _context.Carts.SingleAsync( cart => cart.IdCart == id);
 
             if (cartModel == null)
             {
@@ -91,7 +91,7 @@ namespace CarShop.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Cart.Add(cartModel);
+            _context.Carts.Add(cartModel);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetCartModel", new { id = cartModel.IdCart }, cartModel);
@@ -106,13 +106,13 @@ namespace CarShop.Controllers
                 return BadRequest(ModelState);
             }
 
-            var cartModel = await _context.Cart.FindAsync(id);
+            var cartModel = await _context.Carts.FindAsync(id);
             if (cartModel == null)
             {
                 return NotFound();
             }
 
-            _context.Cart.Remove(cartModel);
+            _context.Carts.Remove(cartModel);
             await _context.SaveChangesAsync();
 
             return Ok(cartModel);
@@ -120,7 +120,7 @@ namespace CarShop.Controllers
 
         private bool CartModelExists(Guid id)
         {
-            return _context.Cart.Any(e => e.IdCart == id);
+            return _context.Carts.Any(e => e.IdCart == id);
         }
     }
 }
